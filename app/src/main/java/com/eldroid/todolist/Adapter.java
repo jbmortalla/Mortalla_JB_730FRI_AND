@@ -62,4 +62,7 @@ public class Adapter extends BaseAdapter {
 
         return convertView;
     }
+    public boolean isTaskChecked(int position) {
+        return taskList.get(position).isChecked();
+    }
 }

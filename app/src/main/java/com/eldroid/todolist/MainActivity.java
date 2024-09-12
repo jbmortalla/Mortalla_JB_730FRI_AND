@@ -1,13 +1,11 @@
 package com.eldroid.todolist;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -57,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             long currentTime = System.currentTimeMillis();
             if (currentTime - lastClickTime < DOUBLE_CLICK_DELAY) {
-                handleDoubleClick(position);
+                if (adapter.isTaskChecked(position)) {
+                    handleDoubleClick(position);
+                } else {
+                    Toast.makeText(MainActivity.this, "Double-click is disabled for unchecked tasks", Toast.LENGTH_SHORT).show();
+                }
             }
             lastClickTime = currentTime;
         });
