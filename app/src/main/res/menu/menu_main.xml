@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_fragment"
+        android:icon="@drawable/note_add"
+        android:title="Go to Fragment"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_dialog"
+        android:icon="@drawable/message"
+        android:title="Open Dialog"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_exit"
+        android:title="Exit App"
+        app:showAsAction="never" />
+
+</menu>
