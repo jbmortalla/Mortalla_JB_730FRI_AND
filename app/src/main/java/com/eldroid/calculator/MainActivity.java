@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean operatorPressed = false;
     private double firstNumber = 0, secondNumber = 0;
     private String operator = "";
-    private DecimalFormat decimalFormat = new DecimalFormat("#.##"); // To allow only two decimal places
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         tvFormula = findViewById(R.id.tvFormula);
         tvResult = findViewById(R.id.tvResult);
 
-        // Example: Handling button clicks
         findViewById(R.id.zero).setOnClickListener(v -> appendToFormula("0"));
         findViewById(R.id.one).setOnClickListener(v -> appendToFormula("1"));
         findViewById(R.id.two).setOnClickListener(v -> appendToFormula("2"));
@@ -46,20 +45,18 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.clear).setOnClickListener(v -> clearFormula());
     }
 
-    // Method to append numbers to the formula
     private void appendToFormula(String value) {
         if (operatorPressed && !formula.contains(operator)) {
-            formula += " " + operator + " "; // Add operator with spaces
+            formula += " " + operator + " ";
         }
         formula += value;
         tvFormula.setText(formula);
     }
 
-    // Handle decimal point addition
     private void addDecimal() {
         if (!hasDecimal) {
             if (operatorPressed && formula.endsWith(" ")) {
-                formula += "0."; // In case the user pressed the operator and needs a decimal after
+                formula += "0.";
             } else {
                 formula += ".";
             }
@@ -68,17 +65,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Set the operator for calculation
     private void setOperator(String op) {
         if (!operatorPressed && !formula.isEmpty()) {
             operator = op;
             operatorPressed = true;
-            hasDecimal = false; // Reset decimal flag for the second number
-            tvFormula.setText(formula + " " + operator + " "); // Add operator with spaces
+            hasDecimal = false;
+            tvFormula.setText(formula + " " + operator + " ");
         }
     }
 
-    // Perform the calculation when '=' is pressed
     private void calculateResult() {
         String[] parts = formula.split(" ");
         if (parts.length == 3) {
@@ -107,9 +102,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
 
-                // Display result with two decimal places
                 tvResult.setText(decimalFormat.format(result));
-                formula = ""; // Reset the formula for the next calculation
+                formula = "";
                 operatorPressed = false;
                 operator = "";
                 hasDecimal = false;
@@ -119,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Clear the formula and result
     private void clearFormula() {
         formula = "";
         operator = "";
