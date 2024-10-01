@@ -1,12 +1,9 @@
 package com.eldroid.menu;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
@@ -33,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         int itemId = item.getItemId();
 
         if (itemId == R.id.action_fragment) {
+            // Replace the current fragment with NewFragment
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, new NewFragment());
             transaction.addToBackStack(null);
@@ -40,10 +38,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
 
         } else if (itemId == R.id.action_dialog) {
-            showDialog();
+            // Show the DialogFragment
+            showMyDialogFragment();
             return true;
 
         } else if (itemId == R.id.action_exit) {
+            // Exit the app
             finish();
             return true;
 
@@ -52,11 +52,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void showDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Dialog")
-                .setMessage("This is a dialog from MainActivity.")
-                .setPositiveButton("OK", (dialog, id) -> dialog.dismiss());
-        builder.create().show();
+    private void showMyDialogFragment() {
+        MyDialogFragment dialogFragment = new MyDialogFragment();
+        dialogFragment.show(getSupportFragmentManager(), "dialog");
     }
 }
