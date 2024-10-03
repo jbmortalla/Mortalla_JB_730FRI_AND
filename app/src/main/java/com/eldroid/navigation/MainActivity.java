@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        loadFragment(new Profile());
-        bottomNavigationView.setSelectedItemId(R.id.profile);
+        loadFragment(new List());
+        bottomNavigationView.setSelectedItemId(R.id.tab_list);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             Fragment fragment = null;

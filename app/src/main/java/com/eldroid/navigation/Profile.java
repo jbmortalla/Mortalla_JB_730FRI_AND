@@ -16,7 +16,8 @@ import androidx.fragment.app.Fragment;
 import com.eldroid.navigation.info.Adapter;
 import com.eldroid.navigation.info.Model;
 
-public class Profile extends Fragment {
+public class Profile extends Fragment
+{
     private EditText nameEditText;
     private EditText emailEditText;
     private RadioGroup genderRadioGroup;
